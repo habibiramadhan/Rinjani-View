@@ -1,27 +1,29 @@
 <?
-       require_once('../config/helper.php');
-       $_SESSION['id'];
+require_once('../config/helper.php');
+$_SESSION['id'];
 ?>
 
 
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
 
-      <!--=============== Links ===============-->
-      <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
-      <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-      <!--=============== Manggil CSS ===============-->
-      <link rel="stylesheet" href="Public/css/index.css">
 
-      <title>Rinjani</title>
-   </head>
-   <body>
-      <!--==================== HEADER ====================-->
-      <header class="header" id="header">
+    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== Manggil CSS ===============-->
+    <link rel="stylesheet" href="Public/css/index.css">
+
+    <title>Rinjani</title>
+</head>
+
+<body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
         <!-- NAVBAR -->
         <nav class="nav container">
             <a href="" class="nav__logo">
@@ -61,13 +63,13 @@
             </div>
         </nav>
         <!-- End Dari Nav -->
-         
-      </header>
 
-      <!--==================== MAIN ====================-->
-      <main class="main">
-         <!--==================== HOME ====================-->
-         <section class="home section" id="home">
+    </header>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+        <!--==================== HOME ====================-->
+        <section class="home section" id="home">
             <img src=" Public/img/3.jpg" alt="Home Image" class="home__bg">
             <div class="home__shadow"></div>
 
@@ -80,11 +82,11 @@
                         EXPLORE <br>
                         Rinjani
                         <?php
-                            if (isset($_SESSION['id'])) {
-                                echo '<a href="dashboard.php">Dashboard</a>';
-                            } else {
-                                echo '<a href="view/login.php">Login</a>';
-                            }
+                        if (isset($_SESSION['id'])) {
+                            echo '<a href="dashboard.php">Dashboard</a>';
+                        } else {
+                            echo '<a href="view/login.php">Login</a>';
+                        }
                         ?>
                     </h1>
 
@@ -105,7 +107,7 @@
                         <h3 class="home__card-title">Pendaki</h3>
                         <div class="home__card-shadow"></div>
                     </article>
-                     
+
                     <article class="home__card">
                         <img src="Public/img/2.jpg" alt="" class="home__card-img">
                         <h3 class="home__card-title">Monyet</h3>
@@ -125,10 +127,10 @@
                     </article>
                 </div>
             </div>
-         </section>
+        </section>
 
-         <!--==================== ABOUT ====================-->
-         <section class="about section" id="about">
+        <!--==================== ABOUT ====================-->
+        <section class="about section" id="about">
             <div class="about__container grid container">
                 <div class="about__data">
                     <h2 class="section__title">
@@ -151,10 +153,10 @@
                     </div>
                 </div>
             </div>
-         </section>
+        </section>
 
-         <!--==================== POPULAR ====================-->
-         <section class="popular section" id="popular">
+        <!--==================== POPULAR ====================-->
+        <section class="popular section" id="popular">
             <h2 class="section__title">Nikmati Rinjani</h2>
 
             <div class="popular__container container grid">
@@ -203,10 +205,10 @@
                     </div>
                 </article>
             </div>
-         </section>
-         
-         <!--==================== EXPLORE ====================-->
-         <section class="explore section" id="explore">
+        </section>
+
+        <!--==================== EXPLORE ====================-->
+        <section class="explore section" id="explore">
             <div class="explore__container">
                 <div class="explore__image">
                     <img src="Public/img/4.jpg" alt="" class="explore__img">
@@ -215,23 +217,23 @@
 
                 <div class="explore__content container grid">
                     <div class="explore__data">
-                         <h2 class="section__title">
+                        <h2 class="section__title">
                             Explore <br>
                             Surga Pengunungan
-                         </h2>
+                        </h2>
 
-                         <p class="explore__description">
+                        <p class="explore__description">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam consectetur debitis quas eaque doloremque in, accusamus sit quae minima totam, ex est a! Aut minima maiores error, velit vitae consequatur.
-                         </p>
+                        </p>
                     </div>
                 </div>
             </div>
-         </section>
-      </main>
+        </section>
+    </main>
 
-      <!--==================== FOOTER ====================-->
-      <footer class="footer">
-         <div class="footer__container container grid">
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+        <div class="footer__container container grid">
             <div class="footer__content grid">
                 <div>
                     <a href="" class="footer__logo">Rinjani</a>
@@ -329,18 +331,19 @@
                     &#169; Copyright Kelompok 4. All Rights Reserved
                 </span>
             </div>
-         </div>
-      </footer>
+        </div>
+    </footer>
 
-      <!--========== SCROLL UP ==========-->
-      
-      <a href="#" class="scrollup" id="scroll-up">
+    <!--========== SCROLL UP ==========-->
+
+    <a href="#" class="scrollup" id="scroll-up">
         <i class="ri-arrow-up-line"></i>
-      </a>
-      <!--=============== SCROLLREVEAL ===============-->
-      <script src=""></script>
+    </a>
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src=""></script>
 
-      <!--=============== MAIN JS ===============-->
-      <script src="public/js/index.js"></script>
-   </body>
+    <!--=============== MAIN JS ===============-->
+    <script src="public/js/index.js"></script>
+</body>
+
 </html>
