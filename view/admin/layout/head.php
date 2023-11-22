@@ -1,6 +1,6 @@
 <?php
-define("BASE_URL", "http://localhost/rinjani/");
-$root_path = $_SERVER['DOCUMENT_ROOT'] . '/rinjani/';
+define("BASE_URL", "http://localhost/rinjani-view/");
+$root_path = $_SERVER['DOCUMENT_ROOT'] . '/rinjani-view/';
 $koneksi_path = $root_path . 'config/koneksi.php';
 require_once($koneksi_path);
 

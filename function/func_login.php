@@ -27,7 +27,7 @@ if (mysqli_num_rows($query) != 0) {
     if ($row['role'] == 'admin') {
         header("location: " . BASE_URL . "view/admin/index.php");
     } elseif ($row['role'] == 'user') {
-        header("location: " . BASE_URL . "view/dashboard.php?page=user");
+        header("location: " . BASE_URL . "view/user/index.php");
     }
 } else {
 

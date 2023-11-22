@@ -1,6 +1,6 @@
 <?php
-define("BASE_URL", "http://localhost/rinjani/");
-$root_path = $_SERVER['DOCUMENT_ROOT'] . '/rinjani/';
+define("BASE_URL", "http://localhost/rinjani-view/");
+$root_path = $_SERVER['DOCUMENT_ROOT'] . '/rinjani-view/';
 $koneksi_path = $root_path . 'config/koneksi.php';
 require_once($koneksi_path);
 
@@ -118,15 +118,9 @@ if ($result && mysqli_num_rows($result) > 0) {
         <? $page = '' ?>
         <ul class="sidebar-nav" id="sidebar-nav">
             <li class="nav-item">
-                <a class="nav-link <?php echo ($page === 'dashboard') ? '' : 'collapsed'; ?>" href="<?php echo BASE_URL; ?>view/admin/index.php?page=dashboard">
+                <a class="nav-link <?php echo ($page === 'dashboard') ? '' : 'collapsed'; ?>" href="<?php echo BASE_URL; ?>view/user/index.php?page=dashboard">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link <?php echo ($page === 'data-user') ? '' : 'collapsed'; ?>" href="<?php echo BASE_URL; ?>view/admin/data-user/data-user.php?page=data-user">
-                    <i class="bi bi-grid"></i>
-                    <span>Data - User</span>
                 </a>
             </li>
 

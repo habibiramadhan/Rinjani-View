@@ -28,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   // Lakukan update
   if (mysqli_query($koneksi, $update_query)) {
-    // Redirect ke halaman profile setelah berhasil diupdate
-    header("location: profile.php");
+    echo "<script>alert('Data updated successfully');</script>";
+    echo "<script>window.location.replace('profile.php');</script>";
     exit();
   } else {
     echo "Error: " . mysqli_error($koneksi);
