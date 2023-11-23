@@ -150,7 +150,7 @@
                             </div>
 
                         </div>
-                        <form class="row g-3 mt-2 needs-validation" action="register.php" method="post" novalidate>
+                        <form class="row g-3 mt-2 needs-validation" action="<?php echo BASE_URL; ?>view/user/index.php?page=form-pendaftaran" method="post" novalidate>
                             <div class="col-12">
                                 <div class="form-check">
                                     <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
