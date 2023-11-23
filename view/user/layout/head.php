@@ -49,7 +49,7 @@ if ($result && mysqli_num_rows($result) > 0) {
 <body>
     <header id="header" class="header fixed-top d-flex align-items-center">
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="<?php echo BASE_URL; ?>view/user/index.php?page=dashboard" class="logo d-flex align-items-center">
                 <img src="<?php echo BASE_URL; ?>public/img/logo.png" alt="Logo">
 
                 <span class="d-none d-lg-block">Rinjani</span>
@@ -81,7 +81,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="<?php echo BASE_URL; ?>view/admin/profil/profile.php">
+                            <a class="dropdown-item d-flex align-items-center" href="<?php echo BASE_URL; ?>view/user/profil/profile.php">
                                 <i class="bi bi-person"></i>
                                 <span>Profil saya</span>
                             </a>
@@ -90,7 +90,7 @@ if ($result && mysqli_num_rows($result) > 0) {
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="<?php echo BASE_URL; ?>view/admin/profil/profile-setting.php">
+                            <a class="dropdown-item d-flex align-items-center" href="<?php echo BASE_URL; ?>view/user/profil/profile-setting.php">
                                 <i class="bi bi-gear"></i>
                                 <span>Pengaturan akun</span>
                             </a>
@@ -121,6 +121,12 @@ if ($result && mysqli_num_rows($result) > 0) {
                 <a class="nav-link <?php echo ($page === 'dashboard') ? '' : 'collapsed'; ?>" href="<?php echo BASE_URL; ?>view/user/index.php?page=dashboard">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?php echo ($page === 'pendaftaran') ? '' : 'collapsed'; ?>" href="<?php echo BASE_URL; ?>view/user/index.php?page=pendaftaran">
+                    <i class="bi bi-grid"></i>
+                    <span>Pendaftaran</span>
                 </a>
             </li>
 
