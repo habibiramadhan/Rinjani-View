@@ -132,9 +132,15 @@ if ($result && mysqli_num_rows($result) > 0) {
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php echo ($page === 'Laporan' || $page === '') ? '' : 'collapsed'; ?>" href="<?php echo BASE_URL; ?>view/user/index.php?page=Laporan">
+                <a class="nav-link <?php echo ($page === 'laporan') ? '' : 'collapsed'; ?>" href="<?php echo BASE_URL; ?>view/user/index.php?page=laporan">
                     <i class="bi bi-grid"></i>
                     <span>Laporan</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?php echo ($page === 'riwayat-laporan') ? '' : 'collapsed'; ?>" href="<?php echo BASE_URL; ?>view/user/index.php?page=riwayat-laporan">
+                    <i class="bi bi-grid"></i>
+                    <span>Riwayat Laporan</span>
                 </a>
             </li>
         </ul>

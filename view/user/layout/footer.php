@@ -10,6 +10,7 @@
 <script src="<?php echo BASE_URL; ?>public/vendor/php-email-form/validate.js"></script>
 <script src="<?php echo BASE_URL; ?>public/js/main.js"></script>
 <script src="<?php echo BASE_URL; ?>public/js/greething.js"></script>
+<script src="<?php echo BASE_URL; ?>public/js/jQuery.js"></script>
 
 <!-- END-JS -->
 </body>
