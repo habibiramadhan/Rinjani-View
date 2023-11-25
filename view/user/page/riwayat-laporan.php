@@ -112,24 +112,19 @@ $result = mysqli_query($koneksi, $query);
 <!-- End #main -->
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script>
     $(document).ready(function() {
-
-        // Ketika tombol "Lihat Respon" diklik
         $('.lihat-respon').click(function() {
-            // Ambil nilai atribut data-idlaporan dari tombol yang diklik
             var idLaporan = $(this).data('idlaporan');
 
-            // Lakukan request AJAX untuk mengambil data spesifik dari tabel laporan berdasarkan idLaporan
+
             $.ajax({
-                url: '<?php echo BASE_URL; ?>function/ambil_data_laporan.php', // Ganti dengan URL yang tepat untuk mengambil data dari database
+                url: '<?php echo BASE_URL; ?>function/ambil_data_laporan.php',
                 method: 'POST',
                 data: {
                     id_laporan: idLaporan
                 },
                 success: function(response) {
-                    // Mengisi konten modal dengan data yang diterima
                     var data = JSON.parse(response);
                     $('#isi_laporan').text(data.isi_laporan);
                     var balasan = data.balasan + " - Ditanggapi oleh Si Lebah Ganteng";
