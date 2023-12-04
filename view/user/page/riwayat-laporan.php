@@ -62,7 +62,8 @@ $result = mysqli_query($koneksi, $query);
                                         echo "</td>";
 
                                         echo "<td>";
-
+                                        echo "<button type='button' class='btn btn-info btn-edit' data-idlaporan='" . $row['id'] . "'>Edit</button>";
+                                        echo "<button type='button' class='btn btn-danger btn-hapus' data-idlaporan='" . $row['id'] . "'>Hapus</button>";
                                         if ($row['balasan'] !== null) {
                                             echo "<button type='button' class='btn btn-primary lihat-respon' data-bs-toggle='modal' data-bs-target='#basicModal' data-idlaporan='" . $row['id'] . "' data-toggle='modal'>Lihat Respon</button>";
                                         } else {
@@ -108,6 +109,70 @@ $result = mysqli_query($koneksi, $query);
     </div>
 </div>
 
+<div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Laporan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3 needs-validation" method="POST" action="<?php echo BASE_URL; ?>function/proses_edit_laporan.php" novalidate>
+                    <input type="hidden" name="user_id" value="<?= $_SESSION['id']; ?>">
+
+                    <!-- Input nama, diambil dari data_pribadi untuk user yang sedang aktif -->
+                    <div class="col-md-8">
+                        <label for="validationCustom01" class="form-label">Nama</label>
+                        <input type="text" class="form-control" id="validationCustom01" name="nama" value="<?= $userName; ?>" disabled>
+                    </div>
+
+                    <!-- Pilihan kategori laporan -->
+                    <div class="col-md-4">
+                        <label for="validationCustom04" class="form-label">Kategori Laporan</label>
+                        <select class="form-select" id="validationCustom04" name="kategori_laporan" required>
+                            <option selected disabled value="">Pilih Kategori Laporan</option>
+                            <option value="Feedback dan Komentar">Feedback dan Komentar</option>
+                            <option value="Kondisi Jalur Pendakian">Kondisi Jalur Pendakian</option>
+                            <option value="Informasi Perjalanan">Informasi Perjalanan</option>
+                            <option value="Keamanan dan Perlindungan Lingkungan">Keamanan dan Perlindungan Lingkungan</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Harap pilih Kategori yang valid.
+                        </div>
+                    </div>
+
+                    <!-- Judul laporan -->
+                    <div class="col-md-12">
+                        <label for="judul_laporan" class="form-label">Judul Laporan</label>
+                        <input type="text" class="form-control" id="isi" name="judul_laporan" required>
+                        <div class="invalid-feedback">
+                            Harap isi Judul yang valid.
+                        </div>
+                    </div>
+
+                    <!-- Isi laporan -->
+                    <div class="col-md-12">
+                        <label for="validationCustom05" class="form-label">Isi Laporan</label>
+                        <textarea class="form-control" id="validationCustom05" style="height: 100px" name="isi_laporan" required></textarea>
+                        <div class="invalid-feedback">
+                            Harap isi Isi Laporan yang valid.
+                        </div>
+                    </div>
+
+                    <!-- Tombol Submit -->
+                    <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <!-- End #main -->
 
@@ -134,6 +199,100 @@ $result = mysqli_query($koneksi, $query);
                     alert("Gagal memuat data laporan.");
                 }
             });
+        });
+    });
+
+    $('.btn-hapus').click(function() {
+        var idLaporan = $(this).data('idlaporan');
+
+        $.ajax({
+            url: '<?php echo BASE_URL; ?>function/hapus_data_laporan.php',
+            method: 'POST',
+            data: {
+                id_laporan: idLaporan
+            },
+            success: function(response) {
+                var data = JSON.parse(response);
+                if (data.status === 'success') {
+                    alert('Data berhasil dihapus');
+                    $(this).closest('tr').remove();
+                    location.reload();
+                } else {
+                    alert('Gagal menghapus data');
+                }
+            },
+            error: function() {
+                alert("Gagal menghubungi server untuk menghapus data");
+            }
+        });
+    });
+    $('.btn-edit').click(function() {
+        var idLaporan = $(this).data('idlaporan');
+
+        $.ajax({
+            url: '<?php echo BASE_URL; ?>function/ambil_data_laporan.php',
+            method: 'POST',
+            data: {
+                id_laporan: idLaporan
+            },
+            success: function(response) {
+                var data = JSON.parse(response);
+
+                $("#validationCustom04").val(data.kategori_laporan);
+                $("#isi").val(data.judul_laporan);
+                $("#validationCustom05").val(data.isi_laporan);
+
+
+                var dropdown = $("#validationCustom04");
+                dropdown.empty();
+                var kategori = ["Feedback dan Komentar", "Kondisi Jalur Pendakian", "Informasi Perjalanan", "Keamanan dan Perlindungan Lingkungan"];
+                $.each(kategori, function(index, value) {
+                    if (value === data.kategori_laporan) {
+                        dropdown.append($('<option selected></option>').val(value).html(value));
+                    } else {
+                        dropdown.append($('<option></option>').val(value).html(value));
+                    }
+                });
+
+                $('#editModal').modal('show');
+                $('#editModal').data('idlaporan', idLaporan);
+            },
+            error: function() {
+                alert("Gagal memuat data laporan.");
+            }
+        });
+    });
+
+    $('#editModal form').submit(function(event) {
+        event.preventDefault();
+
+        var idLaporan = $('#editModal').data('idlaporan');
+        var kategori = $("#validationCustom04").val();
+        var judul = $("#isi").val();
+        var isi = $("#validationCustom05").val();
+
+        $.ajax({
+            url: '<?php echo BASE_URL; ?>function/proses_edit_laporan.php',
+            method: 'POST',
+            data: {
+                id_laporan: idLaporan,
+                kategori_laporan: kategori,
+                judul_laporan: judul,
+                isi_laporan: isi
+            },
+            success: function(response) {
+                var data = JSON.parse(response);
+
+                if (data.status === 'success') {
+                    alert('Laporan berhasil diubah');
+                    location.reload();
+                } else {
+                    alert('Gagal mengubah laporan');
+                }
+            },
+            error: function() {
+                alert("Gagal menghubungi server untuk mengubah laporan");
+            }
         });
     });
 </script>
