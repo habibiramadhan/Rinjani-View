@@ -327,22 +327,18 @@ $_SESSION['id'];
                     </a>
                 </div>
 
-                <span class="footer__copy">
-                    &#169; Copyright Kelompok 4. All Rights Reserved
-                </span>
+
             </div>
         </div>
     </footer>
 
-    <!--========== SCROLL UP ==========-->
 
     <a href="#" class="scrollup" id="scroll-up">
         <i class="ri-arrow-up-line"></i>
     </a>
-    <!--=============== SCROLLREVEAL ===============-->
+
     <script src=""></script>
 
-    <!--=============== MAIN JS ===============-->
     <script src="public/js/index.js"></script>
 </body>
 
